@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bem-vindo ao <%= appName %></title>
+  </head>
+  <body style="margin: 0; padding: 0; background-color: #f0f2f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="padding: 40px 0;">
+      <tr>
+        <td align="center">
+          <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); overflow: hidden;">
+            <tr>
+              <td style="background-color: #4CAF50; padding: 20px 0;" align="center">
+                <img src="https://media.licdn.com/dms/image/v2/D4D0BAQHQzLXzfCKndw/company-logo_100_100/company-logo_100_100/0/1700791435737?e=1750896000&v=beta&t=ajTMYhKLwUSXIOrzwr38HzYIfcanT-VAcE4DPjZtaNU" alt="Logo" style="width: 120px; height: auto;" />
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 30px;">
+                <h1 style="color: #333333; font-size: 24px;">Bem-vindo ao <%= appName %>!</h1>
+                <p style="color: #555555; font-size: 16px; line-height: 1.5;">
+                  Vimos que você fez o login no <%= appName %> <br>
+                  Não foi você? <br>
+                  Se você não fez o login, é possível que alguém tenha acessado sua conta. <br>
+                  Para garantir a segurança da sua conta, recomendamos que você altere sua senha imediatamente.
+                </p>
+                <p style="color: #555555; font-size: 16px; line-height: 1.5;">
+                  Explore nossos serviços e aproveite tudo o que o <strong><%= appName %></strong> tem a oferecer.
+                </p>
+                <p style="color: #999999; font-size: 12px; text-align: center;">
+                  <%= date %>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td style="background-color: #f7f7f7; padding: 20px; text-align: center; font-size: 12px; color: #aaa;">
+                Este e-mail foi enviado automaticamente pelo sistema <%= appName %>. Não é necessário respondê-lo.
+                <br>
+                <a href="https://madgic.com.br">Madgic</a>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

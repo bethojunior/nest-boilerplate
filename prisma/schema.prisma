@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String  @id @default(uuid()) @map("_id")
+  name     String
+  email    String  @map("email")
+  nickname String  @map("nickname")
+  phone    String  @map("phone")
+  password String
+
+  isActive Boolean @default(true)
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime?
+
+  @@unique([email, nickname, phone])
+  @@map("users")
+}
+
+model LoginAttempt {
+  id    Int    @id @default(autoincrement())
+  ip    String @unique
+  count Int    @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model BlockedIp {
+  id           Int      @id @default(autoincrement())
+  ip           String   @unique
+  blockedUntil DateTime
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
