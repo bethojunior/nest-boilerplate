@@ -10,7 +10,7 @@ import { PrismaService } from 'src/providers/prisma/prisma.service';
 import { User } from '@prisma/client';
 import { JwtService } from '@nestjs/jwt';
 import { LoginPayload } from 'src/@types/utils/login-payload';
-import { SendAlertLoginJob } from 'src/job/email/login.job';
+import { SendAlertLoginEvent } from 'src/events/email/login.event';
 import * as bcrypt from 'bcrypt';
 import { LoginAttemptService } from 'src/providers/security/login-attempt.service';
 import { UserEntity } from 'src/@types/user/user.entity';
@@ -22,7 +22,7 @@ export class AuthService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly jwtService: JwtService,
-    private readonly sendAlertLoginJob: SendAlertLoginJob,
+    private readonly sendAlertLoginEvent: SendAlertLoginEvent,
     private readonly loginAttemptService: LoginAttemptService,
   ) { }
 
@@ -64,7 +64,7 @@ export class AuthService {
 
     const { password, ...userWithoutPassword } = user;
 
-    await this.sendAlertLoginJob.handle(user.name, user.email);
+    await this.sendAlertLoginEvent.handle(user.name, user.email);
 
     return {
       user: {

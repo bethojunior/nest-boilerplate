@@ -5,7 +5,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from './jwt.strategy';
 import { QueueModule } from 'src/providers/queue/queue.module';
-import { SendAlertLoginJob } from 'src/job/email/login.job';
+import { SendAlertLoginEvent } from 'src/events/email/login.event';
 import { LoginAttemptService } from 'src/providers/security/login-attempt.service';
 import { SecurityModule } from 'src/providers/security/security.module';
 
@@ -23,7 +23,7 @@ import { SecurityModule } from 'src/providers/security/security.module';
   providers: [
     AuthService,
     JwtStrategy,
-    SendAlertLoginJob,
+    SendAlertLoginEvent,
     LoginAttemptService,
   ],
   exports: [AuthService],

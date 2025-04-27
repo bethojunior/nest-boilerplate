@@ -1,19 +1,17 @@
 import { ITemplatePath } from 'src/@types/utils/template-path';
-import * as ejs from 'ejs';
 import { QueueService } from "src/providers/queue/queue.service";
-import { Injectable } from "@nestjs/common";
+import * as ejs from 'ejs';
+import { Injectable } from '@nestjs/common';
 
 @Injectable()
-class SendWelcomeRegisterJob
-{
+class SendAlertLoginEvent {
   constructor(private readonly queueService: QueueService) { }
 
-  async handle(email: string)
-  {
+  async handle(name: string, email: string) {
     const appName = process.env.APP_NAME || 'Madgic';
-    const subject = `Bem vindo ao ${appName}`;
+    const subject = `Alerta de login | ${appName}`;
     const text = `${new Date()}`;
-    const templatePath = ITemplatePath('welcome-email.ejs');
+    const templatePath = ITemplatePath('login-email.ejs');
     const html = await ejs.renderFile(templatePath, {
       appName,
       date: new Date().toLocaleString(),
@@ -28,4 +26,4 @@ class SendWelcomeRegisterJob
   }
 }
 
-export { SendWelcomeRegisterJob }
+export { SendAlertLoginEvent }
